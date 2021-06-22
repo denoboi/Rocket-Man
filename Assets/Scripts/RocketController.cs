@@ -7,9 +7,12 @@ public class RocketController : MonoBehaviour
     private Rigidbody playerRb;
     public float thrustAmount;
     public float rotationAmount;
+    private AudioSource playerAudio;
+    
 
     void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>(); 
     }
 
@@ -23,9 +26,25 @@ public class RocketController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+
             playerRb.AddRelativeForce(Vector3.up * thrustAmount * Time.deltaTime);
             Debug.Log("Pressed SPACE - Thrusting");
+
+            //audio
+            if (!playerAudio.isPlaying) //surekli bir jittering ses geliyor onu onlemek icin. eger calmiyorsa cal diyoruz.
+            {
+                playerAudio.Play();
+            }
+
         }
+        else
+
+        {
+            playerAudio.Stop();
+        }
+
+
+
     }
     void ProcessRotation()
       { 
@@ -40,6 +59,7 @@ public class RocketController : MonoBehaviour
         }
      }
 
+    
     private void ApplyRotation(float rotationThisFrame)
     {
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
