@@ -10,12 +10,12 @@ public class RocketController : MonoBehaviour
     private AudioSource playerAudio;
 
     [SerializeField] AudioClip mainEngine;
-    
+   
 
     void Start()
     {
         playerAudio = GetComponent<AudioSource>();
-        playerRb = GetComponent<Rigidbody>(); 
+        playerRb = GetComponent<Rigidbody>();
     }
 
     
@@ -44,8 +44,6 @@ public class RocketController : MonoBehaviour
         {
             playerAudio.Stop();
         }
-
-
 
     }
     void ProcessRotation()
