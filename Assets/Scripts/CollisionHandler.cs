@@ -3,21 +3,58 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] float levelLoadDelay = 1.0f;
+    [SerializeField] AudioClip successAudio;
+    [SerializeField] AudioClip failAudio;
+
+    AudioSource sfx;
+    bool isTransitioning = false;
+
+    void Start()
+    {
+        sfx = GetComponent<AudioSource>();
+        
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        switch(collision.gameObject.tag)
+        if (isTransitioning) { return; } //true ise asagiya hic girmiyor switche. Geri donuyor.
+        //bunu if(!isTransitioning) ile de yazabilirdik. yani false ise o zaman switche gir.
+        switch (collision.gameObject.tag)
         {
             case "Friendly":
                 Debug.Log("This is friendly");
                 break;
+                
             case "Finished":
-                NextScene();
+                StartSuccessSequence();
                 Debug.Log("Congrats yo, you finished");
+                
+                sfx.PlayOneShot(successAudio);
+                
                 break;
+               
             default:
-                ReloadScene();
+                StartCrashSequence();
+                sfx.PlayOneShot(failAudio);
                 break;
 
+        }
+
+    }
+        void StartSuccessSequence()
+        {
+            isTransitioning = true; 
+            GetComponent<RocketController>().enabled = false;
+            Invoke("NextScene", levelLoadDelay);
+
+        }
+
+        void StartCrashSequence()
+        {
+            isTransitioning = true;      
+            GetComponent<RocketController>().enabled = false;
+            Invoke("ReloadScene", levelLoadDelay);
         }
           void ReloadScene()
         {
@@ -36,5 +73,7 @@ public class CollisionHandler : MonoBehaviour
             }
             SceneManager.LoadScene(nextLevel);
         }
-    }
+
+        
+    
 }

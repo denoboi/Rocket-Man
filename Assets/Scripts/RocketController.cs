@@ -8,6 +8,8 @@ public class RocketController : MonoBehaviour
     public float thrustAmount;
     public float rotationAmount;
     private AudioSource playerAudio;
+
+    [SerializeField] AudioClip mainEngine;
     
 
     void Start()
@@ -33,7 +35,7 @@ public class RocketController : MonoBehaviour
             //audio
             if (!playerAudio.isPlaying) //surekli bir jittering ses geliyor onu onlemek icin. eger calmiyorsa cal diyoruz.
             {
-                playerAudio.Play();
+                playerAudio.PlayOneShot(mainEngine);
             }
 
         }

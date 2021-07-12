@@ -316,7 +316,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 39a542e9fcba69343b601354b999fafc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.19
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -412,6 +412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ecb4e8c4aad494784607ce293a4298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoadDelay: 1
+  successAudio: {fileID: 8300000, guid: fe3a01d5f6af07b47a3e9c8b98df9604, type: 3}
+  failAudio: {fileID: 8300000, guid: 10b570c0952c32842872770e58878942, type: 3}
 --- !u!1001 &977546319537566995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,6 +662,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 637281578, guid: 97288e6b1de5b5f49ba7b059cd0ee3d0, type: 3}
+      propertyPath: mainEngine
+      value: 
+      objectReference: {fileID: 8300000, guid: 39a542e9fcba69343b601354b999fafc, type: 3}
     - target: {fileID: 637281583, guid: 97288e6b1de5b5f49ba7b059cd0ee3d0, type: 3}
       propertyPath: m_Drag
       value: 0.25
