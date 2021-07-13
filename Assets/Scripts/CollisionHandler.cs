@@ -11,18 +11,34 @@ public class CollisionHandler : MonoBehaviour
 
     AudioSource sfx;
     bool isTransitioning = false;
+    bool isCollisionOn = true;
 
     void Start()
     {
         sfx = GetComponent<AudioSource>();
-       
-
+        
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void Update()
+    {
+        CheatCodes();
+    }
+
+
+    
+     
+
+private void OnCollisionEnter(Collision collision)
     {
         if (isTransitioning) { return; } //true ise asagiya hic girmiyor switche. Geri donuyor.
-        //bunu if(!isTransitioning) ile de yazabilirdik. yani false ise o zaman switche gir.
+                                         //bunu if(!isTransitioning) ile de yazabilirdik. yani false ise o zaman switche gir.
+
+        if (!isCollisionOn) { return; } //collision kapanirsa o zaman asagiyi calistirma
+
+        
+
+        
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -32,17 +48,18 @@ public class CollisionHandler : MonoBehaviour
             case "Finished":
                 StartSuccessSequence();
                 Debug.Log("Congrats yo, you finished");
-                
-                sfx.PlayOneShot(successAudio);
+                sfx.PlayOneShot(successAudio,0.8f);
                 
                 break;
                
             default:
                 StartCrashSequence();
-                sfx.PlayOneShot(failAudio);
+                sfx.PlayOneShot(failAudio,0.4f);
                 break;
 
         }
+
+        
 
     }
         void StartSuccessSequence()
@@ -78,6 +95,20 @@ public class CollisionHandler : MonoBehaviour
             }
             SceneManager.LoadScene(nextLevel);
         }
+
+    void CheatCodes()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCollisionOn = false;
+            Debug.Log("CollisionCheat");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            NextScene();
+            Debug.Log("LevelCheat");
+        }
+    }
 
         
     
