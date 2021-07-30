@@ -9,6 +9,10 @@ public class RocketController : MonoBehaviour
     public float rotationAmount;
     private AudioSource playerAudio;
 
+    [SerializeField] ParticleSystem leftThruster;
+    [SerializeField] ParticleSystem rightThruster;
+    [SerializeField] ParticleSystem mainThruster;
+
     [SerializeField] AudioClip mainEngine;
    
 
@@ -16,6 +20,7 @@ public class RocketController : MonoBehaviour
     {
         playerAudio = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
+       
     }
 
     
@@ -30,7 +35,14 @@ public class RocketController : MonoBehaviour
         {
 
             playerRb.AddRelativeForce(Vector3.up * thrustAmount * Time.deltaTime);
+            
             Debug.Log("Pressed SPACE - Thrusting");
+            if(!mainThruster.isPlaying)
+            {
+                mainThruster.Play();
+            }
+           
+
 
             //audio
             if (!playerAudio.isPlaying) //surekli bir jittering ses geliyor onu onlemek icin. eger calmiyorsa cal diyoruz.
@@ -43,21 +55,44 @@ public class RocketController : MonoBehaviour
 
         {
             playerAudio.Stop();
+            mainThruster.Stop();
         }
 
     }
     void ProcessRotation()
-      { 
+    { 
         
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotationAmount);
+            if(!rightThruster.isPlaying)
+            {
+                rightThruster.Play();
+            }
+             
+           
+            
         }
+        
         else if (Input.GetKey(KeyCode.D)) //buraya apply rotation methodunun tersini eklemek icin mecburen parametre kullanacagiz.(rotationThisFrame)
         {
             ApplyRotation(-rotationAmount);
+            
+            if(!leftThruster.isPlaying)
+            {
+                leftThruster.Play();
+            }
+
+            
         }
-     }
+        else
+        {
+            rightThruster.Stop();
+            leftThruster.Stop();
+        }
+       
+        
+    }
 
     
     private void ApplyRotation(float rotationThisFrame)
