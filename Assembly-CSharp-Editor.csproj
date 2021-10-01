@@ -56,29 +56,29 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\NotificationManagerEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\SwitchManagerEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerBasicWithIconEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerIconEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\RadialSliderEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ExtendedColorPicker.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\UIGradientEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\PieChartEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\HorizontalSelectorEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\InitMUIP.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ProgressBarEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerWithIconEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\DropdownMultiSelectEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\UIManagerEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\CustomDropdownEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\PieChartEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ContextMenu.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\NotificationManagerEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerBasicWithIconEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\UIGradientEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\HorizontalSelectorEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ModalWindowManagerEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\TooltipManagerEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\DropdownMultiSelectEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\WindowManagerEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerBasicIconEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\UIManagerEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\SliderManagerEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\SwitchManagerEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerIconEditor.cs" />
+    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerBasicIconEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ContextMenuManagerEditor.cs" />
-    <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\CustomDropdownEditor.cs" />
     <Compile Include="Assets\AssetStore\Modern UI Pack\Editor\Scripts\ButtonManagerBasicEditor.cs" />
   </ItemGroup>
   <ItemGroup>

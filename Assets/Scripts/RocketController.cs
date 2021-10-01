@@ -10,51 +10,45 @@ public class RocketController : MonoBehaviour
     public float rotationAmount;
     private AudioSource playerAudio;
 
-    public float fuel = 100;
-
     [SerializeField] ParticleSystem leftThruster;
     [SerializeField] ParticleSystem rightThruster;
     [SerializeField] ParticleSystem mainThruster;
 
     [SerializeField] AudioClip mainEngine;
 
-    public Slider fuelSlider;
-   
     void Awake()
     {
-        playerAudio = GetComponent<AudioSource>();
-        playerRb = GetComponent<Rigidbody>();
-        playerRb.velocity = Vector3.zero;
-        fuelSlider = FindObjectOfType<Slider>();
+       
       
     }
     private void Start()
     {
-        fuelSlider.value = fuel;
+        playerAudio = GetComponent<AudioSource>();
+        playerRb = GetComponent<Rigidbody>();
+        playerRb.velocity = Vector3.zero;
     }
 
-    /* oyun baslar
-     * ilk input gelinceye kadar rigidbody.constaints = constaints.freezerotati; 
-     * ilk inputtan sonra rotasyon acilir
-     * 
-     */
+   
     void Update()
     {
-        if (fuel <= 0)
-            return;
-        Debug.Log(fuel);
+        
         ProcessThrust();
         ProcessRotation();
-        DecreaseFuel();      
+        
     }
+
+
     void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            if (FuelManager.instance.canFly == false)
+                return;
+
             playerRb.AddRelativeForce(Vector3.up * thrustAmount * Time.deltaTime);
-            
+
             Debug.Log("Pressed SPACE - Thrusting");
-            if(!mainThruster.isPlaying)
+            if (!mainThruster.isPlaying)
             {
                 mainThruster.Play();
             }
@@ -82,35 +76,22 @@ public class RocketController : MonoBehaviour
         else if (Input.GetKey(KeyCode.D)) //buraya apply rotation methodunun tersini eklemek icin mecburen parametre kullanacagiz.(rotationThisFrame)
         {
             ApplyRotation(-rotationAmount);
-            
-            if(!leftThruster.isPlaying)
+
+            if (!leftThruster.isPlaying)
             {
                 leftThruster.Play();
-            }   
+            }
         }
         else
         {
             rightThruster.Stop();
             leftThruster.Stop();
-        }    
+        }
     } 
     private void ApplyRotation(float rotationThisFrame)
     {
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
     }
 
-    WaitForSeconds duration = new WaitForSeconds(0.25f);
-
-    void ChangeSlider(float fuel)
-    {
-        fuelSlider.value = fuel;
-    }
-    void DecreaseFuel()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            fuel -= 0.2f;
-            ChangeSlider(fuel);
-        }
-    }        
+    
 }
