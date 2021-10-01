@@ -22,7 +22,7 @@ public class SliderController : MonoBehaviour
     private void Update()
     {
         fuelSlider.fillAmount = FuelManager.instance.CurrentFuelAmount / FuelManager.instance.maxFuelAmount;
-        fuelText.text = FuelManager.instance.CurrentFuelAmount.ToString() ;
+        fuelText.text = ((int)FuelManager.instance.CurrentFuelAmount).ToString() ;
     }
     //void ChangeSlider(float fuel)
     //{
