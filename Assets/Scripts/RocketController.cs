@@ -28,15 +28,11 @@ public class RocketController : MonoBehaviour
         playerRb.velocity = Vector3.zero;
     }
 
-   
     void Update()
     {
-        
         ProcessThrust();
         ProcessRotation();
-        
     }
-
 
     void ProcessThrust()
     {

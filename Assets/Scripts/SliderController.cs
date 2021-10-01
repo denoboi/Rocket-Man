@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SliderController : MonoBehaviour
 {
     public Image fuelSlider;
+    public TextMeshProUGUI fuelText;
 
     //private void OnEnable()
     //{
@@ -20,6 +22,7 @@ public class SliderController : MonoBehaviour
     private void Update()
     {
         fuelSlider.fillAmount = FuelManager.instance.CurrentFuelAmount / FuelManager.instance.maxFuelAmount;
+        fuelText.text = FuelManager.instance.CurrentFuelAmount.ToString() ;
     }
     //void ChangeSlider(float fuel)
     //{
